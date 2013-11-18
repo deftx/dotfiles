@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# Detect which `ls` flavor is in use
+if ls --color > /dev/null 2>&1; then # GNU `ls`
+        colorflag="--color"
+else # OS X `ls`
+        colorflag="-G"
+fi
+
+alias la='ls -al ${colorflag}'
+alias ls='ls ${colorflag}'
+alias nano='echo "Use vim"'
+
+# Directories
+alias ws='cd ~/workspace'
+alias cgd='cd ~/Google\ Drive'
+alias tu='cd ~/workspace/trade-uploader'
+
+# Shortcuts
+alias rall='sudo apachectl restart'
+alias sbx='ssh sbx'
+alias dsh='ssh vm'
+
+alias wconfig='cd /Applications/MAMP/conf'
+alias terr='tail -fn 300 /Applications/MAMP/logs/php_error.log'
+alias tlog='tail -fn 300 /Applications/MAMP/logs/apache_access.log'
+
+alias h="history"
+
+# Git
+alias g='git'
+alias gp='git push'
+alias gpo='git push origin'
+alias gpom='git push origin master'
+alias gs='git status'
+alias gpl='git pull'
+alias gplom='git pull origin master'
+alias gcam='git commit -am'
+
+# Useful
+
+# Homesick commit, push, update
+alias hscm='cd ~/dotfiles && gcam "Homesick" && gpom && homesick pull --all && homesick symlink dotfiles'
+
+# URL-encode strings
+alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
+
+# View HTTP traffic
+alias sniff="sudo ngrep -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
+alias httpdump="sudo tcpdump -i en0 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""

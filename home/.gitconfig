@@ -1,0 +1,41 @@
+[core]
+    excludesfile = ~/.gitignore
+[color]
+    ui = auto
+[alias]
+    a = add
+    l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    lp = log -p --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    r = reset
+    p = stage --patch
+    d  = diff
+    dt = difftool
+    dc = diff --cached
+    dtc = difftool --cached
+    br = branch
+    st = status
+    si = stage --interactive
+    ci = commit
+    co = checkout
+    ps = push
+    pl = pull
+    plr = pull --rebase
+    sm = submodule
+    submodules = submodule
+[user]
+    name = Rob Vella
+    email = me@robvella.com
+[difftool]
+    prompt = false
+[diff]
+        tool = sourcetree
+[difftool "sourcetree"]
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+    path =
+[mergetool "sourcetree"]
+    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
+[push]
+    default = simple
+[help]
+    autocorrect = 1
